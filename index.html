@@ -3,262 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>陈黎 (Li Chen) - 个人网站</title>
+    <title>陈黎 (Li Chen) | 武汉科技大学教授 | 智能机器视觉实验室 (IMVL)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary-blue: #003366; --secondary-blue: #0056b3; --accent-gold: #ffc107; --bg-gray: #f8f9fa; --text-dark: #2c3e50; }
+        :root { --primary-blue: #003366; --accent-blue: #0056b3; --text-dark: #2c3e50; --border-light: #e2e8f0; --bg-gray: #f8fafc; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', "Microsoft YaHei", sans-serif; line-height: 1.8; color: var(--text-dark); background: #fff; scroll-behavior: smooth; }
+        body { font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif; line-height: 1.8; color: var(--text-dark); background: #fff; scroll-behavior: smooth; }
         
+        /* 顶部 AI 声明 */
+        .ai-banner { background: #f1f5f9; text-align: center; padding: 10px; font-size: 0.85rem; color: #64748b; border-bottom: 1px solid var(--border-light); }
+
         /* 导航栏 */
-        nav { background: var(--primary-blue); padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.2); }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 2rem; }
-        nav a { color: #fff; text-decoration: none; font-weight: 500; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-        nav a:hover { color: var(--accent-gold); }
+        nav { background: #fff; border-bottom: 1px solid var(--border-light); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+        .nav-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; padding: 15px 20px; align-items: center; }
+        .nav-logo { font-weight: 700; color: var(--primary-blue); font-size: 1.2rem; letter-spacing: 1px; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); margin-left: 25px; font-size: 0.95rem; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-blue); }
 
-        /* 主视口区 */
-        .hero { background: var(--bg-gray); padding: 120px 20px 60px; border-bottom: 1px solid #eee; }
-        .hero-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 320px 1fr; gap: 60px; align-items: flex-start; }
-        .profile-card { text-align: center; background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: sticky; top: 120px; }
-        .profile-pic { width: 100%; border-radius: 10px; margin-bottom: 20px; }
-        .hero-text h1 { font-size: 3rem; color: var(--primary-blue); margin-bottom: 0.5rem; }
-        .hero-text h2 { font-size: 1.4rem; color: #666; font-weight: 400; margin-bottom: 1.5rem; }
-        .contact-list { list-style: none; text-align: left; font-size: 0.9rem; }
-        .contact-list li { margin: 10px 0; display: flex; align-items: center; gap: 10px; }
-        .contact-list i { color: var(--secondary-blue); width: 20px; }
+        /* 个人核心信息 */
+        header { max-width: 1100px; margin: 50px auto; padding: 0 20px; display: grid; grid-template-columns: 280px 1fr; gap: 50px; align-items: flex-start; }
+        .profile-container { position: relative; }
+        .profile-photo { width: 100%; border-radius: 12px; border: 1px solid var(--border-light); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .bio h1 { font-size: 2.8rem; color: var(--primary-blue); margin-bottom: 5px; }
+        .bio .titles { font-size: 1.15rem; font-weight: 600; color: #4b5563; margin-bottom: 20px; }
+        .badge-group { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 25px; }
+        .badge { background: #e0f2fe; color: #0369a1; padding: 4px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; border: 1px solid #bae6fd; }
+        .intro-p { margin-bottom: 15px; text-align: justify; }
 
-        /* 通用板块布局 */
-        section { max-width: 1200px; margin: 80px auto; padding: 0 20px; }
-        h2.section-title { font-size: 2rem; color: var(--primary-blue); border-bottom: 3px solid var(--accent-gold); display: inline-block; padding-bottom: 5px; margin-bottom: 40px; }
+        /* 板块布局 */
+        section { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
+        h2 { font-size: 1.6rem; color: var(--primary-blue); border-bottom: 2px solid var(--primary-blue); padding-bottom: 10px; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
         
-        /* 动态区卡片 */
-        .news-box { background: #fffaf0; border-left: 5px solid var(--accent-gold); padding: 25px; border-radius: 5px; margin-bottom: 30px; }
-        .news-item { margin-bottom: 15px; display: flex; gap: 15px; align-items: flex-start; }
-        .news-date { background: var(--primary-blue); color: #fff; padding: 2px 10px; border-radius: 3px; font-size: 0.8rem; min-width: 80px; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .card { background: var(--bg-gray); padding: 25px; border-radius: 12px; border: 1px solid var(--border-light); transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-color: var(--accent-blue); }
+        .card h3 { font-size: 1.1rem; margin-bottom: 15px; color: var(--primary-blue); display: flex; align-items: center; gap: 10px; }
 
-        /* 研究兴趣板块 */
-        .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .research-card { border: 1px solid #eee; padding: 30px; border-radius: 10px; transition: 0.3s; background: linear-gradient(145deg, #ffffff, #f0f4f8); }
-        .research-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        .research-card h3 { color: var(--secondary-blue); margin-bottom: 15px; font-size: 1.3rem; }
+        /* 论文与项目列表 */
+        .pub-list { list-style: none; }
+        .pub-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dashed var(--border-light); }
+        .pub-item:last-child { border: none; }
+        .pub-title { font-weight: 700; color: #111827; display: block; margin-bottom: 5px; }
+        .venue { font-weight: 800; color: #dc2626; font-size: 0.85rem; margin-right: 12px; text-transform: uppercase; }
+        .paper-link { text-decoration: none; color: var(--accent-blue); font-size: 0.85rem; margin-left: 10px; font-weight: 600; }
+        .paper-link:hover { text-decoration: underline; }
 
-        /* 论文展示列表 */
-        .pub-table { width: 100%; border-collapse: collapse; }
-        .pub-row { border-bottom: 1px solid #eee; transition: 0.2s; }
-        .pub-row:hover { background: #fdfdfd; }
-        .pub-cell { padding: 20px 10px; }
-        .pub-year { font-weight: bold; color: var(--primary-blue); width: 80px; }
-        .pub-tag { font-size: 0.75rem; color: #fff; background: #28a745; padding: 2px 6px; border-radius: 3px; margin-right: 5px; }
-
-        /* 团队与去向 */
-        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .alumni-card { background: var(--primary-blue); color: #fff; padding: 20px; border-radius: 8px; text-align: center; }
-        .alumni-card h4 { font-size: 1.1rem; margin-bottom: 5px; }
-        .alumni-card p { font-size: 0.85rem; opacity: 0.9; }
+        /* 实验室硬核资源 */
+        .lab-highlight { background: var(--primary-blue); color: #fff; padding: 40px; border-radius: 16px; margin-top: 20px; box-shadow: 0 20px 40px rgba(0,51,102,0.15); }
+        .lab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px; }
+        .lab-stat { border-left: 3px solid #fbbf24; padding-left: 20px; }
+        .lab-stat h4 { color: #93c5fd; margin-bottom: 10px; font-size: 0.95rem; text-transform: uppercase; }
 
         /* 页脚与计数器 */
-        footer { background: var(--primary-blue); color: #fff; padding: 60px 20px 40px; text-align: center; }
-        .counter-section { margin-bottom: 20px; font-size: 0.9rem; opacity: 0.8; }
-        .counter-num { font-weight: bold; color: var(--accent-gold); font-size: 1.1rem; }
+        footer { background: #fff; border-top: 1px solid var(--border-light); padding: 60px 20px; text-align: center; }
+        .counter-container { display: inline-flex; align-items: center; background: #f1f5f9; padding: 10px 25px; border-radius: 50px; font-size: 0.9rem; border: 1px solid #e2e8f0; }
+        .counter-val { font-weight: 700; color: var(--primary-blue); margin: 0 5px; }
 
-        @media (max-width: 992px) { .hero-container { grid-template-columns: 1fr; } .profile-card { position: relative; top: 0; } }
+        @media (max-width: 850px) {
+            header { grid-template-columns: 1fr; text-align: center; }
+            .profile-photo { width: 200px; margin: 0 auto; }
+            .badge-group { justify-content: center; }
+            .lab-grid { grid-template-columns: 1fr; }
+        }
     </style>
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </head>
 <body>
 
+<div class="ai-banner">本网页由人工智能辅助生成，内容基于 2026 年最新科研资料</div>
+
 <nav>
     <div class="nav-container">
-        <a href="#about">简介</a>
-        <a href="#news">动态</a>
-        <a href="#research">研究兴趣</a>
-        <a href="#publications">论文发表</a>
-        <a href="#projects">科研项目</a>
-        <a href="#awards">荣誉奖励</a>
-        <a href="#team">团队去向</a>
+        <div class="nav-logo">CHEN LI | IMVL</div>
+        <div class="nav-links">
+            <a href="#about">简介</a>
+            <a href="#education">教育</a>
+            <a href="#research">研究</a>
+            <a href="#publications">论文发表</a>
+            <a href="#projects">科研项目</a>
+            <a href="#lab">实验条件</a>
+            <a href="#team">人才培养</a>
+        </div>
     </div>
 </nav>
 
-<div class="hero" id="about">
-    <div class="hero-container">
-        <div class="profile-card">
-            <img src="https://via.placeholder.com/300x400?text=Prof.+Li+Chen" alt="陈黎教授" class="profile-pic">
-            <h3>陈黎 (Li Chen)</h3>
-            <p style="color:#888; margin-bottom:15px;">IEEE Senior Member</p>
-            <ul class="contact-list">
-                <li><i class="fas fa-envelope"></i> chenli@wust.edu.cn</li>
-                <li><i class="fab fa-qq"></i> 52282375 (招生专用)</li>
-                <li><i class="fas fa-map-marker-alt"></i> 武汉科技大学计算机学院</li>
-                <li><i class="fas fa-building"></i> 智能机器视觉实验室 (IMVL)</li>
-            </ul>
+<header id="about">
+    <div class="profile-container">
+        <img src="profile.jpg" alt="陈黎教授" class="profile-photo">
+    </div>
+    <div class="bio">
+        <h1>陈黎 <span style="font-size: 0.5em; color: #94a3b8; font-weight: 400;">Li Chen</span></h1>
+        <div class="titles">教授、博士生导师 · IEEE Senior Member · 湖北省杰青</div>
+        <div class="badge-group">
+            <span class="badge">智能媒体计算团队负责人</span>
+            <span class="badge">省校企共建安防中心负责人</span>
+            <span class="badge">交通视频专委会委员</span>
+            <span class="badge">省委人才办“科技副总”</span>
+            <span class="badge">专家科创工作站专家</span>
         </div>
-        
-        <div class="hero-text">
-            <h1>陈黎</h1>
-            <h2>教授、博士生导师、湖北省杰青</h2>
-            <p>
-                陈黎博士，2006年毕业于新加坡南洋理工大学信息工程系。现任武汉科技大学计算机科学与技术学院教授，智能媒体计算科研团队负责人，湖北省校企共建安防监控技术研发中心负责人。
-            </p>
-            <p style="margin-top: 15px;">
-                在学术领域，陈黎教授深耕机器视觉与人工智能二十余载，已在 IEEE TIP、TSP、TMI、TSMC 等核心期刊及 CVPR、AAAI 等国际顶会发表论文 140 余篇。他不仅在理论研究上造诣颇深，更致力于产学研深度融合，担任多家高新企业的“科技副总”，主持多项百度等领军企业的技术开发课题。
-            </p>
-            
-            <div id="news" style="margin-top: 40px;">
-                <h3 style="margin-bottom: 20px; color: var(--primary-blue);">
-                    <i class="fas fa-bullhorn"></i> 近期动态
-                </h3>
-                <div class="news-box">
-                    <div class="news-item">
-                        <span class="news-date">2026.06</span>
-                        <p><b>[顶会]</b> 论文 "Dual-level Adapter Boosting..." 被 <b>CVPR 2026</b> 录用。</p>
-                    </div>
-                    <div class="news-item">
-                        <span class="news-date">2026.03</span>
-                        <p><b>[项目]</b> 启动 2026 NSFC 重点课题：生成式美学驱动的 VLA 模型闭环优化研究。</p>
-                    </div>
-                    <div class="news-item">
-                        <span class="news-date">2025.12</span>
-                        <p><b>[期刊]</b> 论文 "Integrating Aesthetic-Driven..." 被 <b>IEEE TMM</b> 接收。</p>
-                    </div>
-                </div>
-            </div>
+        <p class="intro-p">
+            陈黎教授，2006年毕业于新加坡南洋理工大学信息工程系。回国后组建了<b>智能机器视觉实验室 (IMVL)</b>，致力于人工智能、机器视觉及多模态大模型的理论突破与应用结合。
+        </p>
+        <p class="intro-p">
+            目前入选湖北省杰出青年基金、湖北省新世纪高层次人才工程，并担任多家科技公司“科技副总”。他在国内外顶刊顶会发表论文 140 余篇，其中包括 IEEE TIP、TSP、TMI 及 CVPR、AAAI 等。
+        </p>
+        <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--border-light); font-size: 0.95rem;">
+            <p><i class="fas fa-envelope" style="color: var(--accent-blue); width: 25px;"></i> <b>Email:</b> chenli@wust.edu.cn</p>
+            <p><i class="fab fa-qq" style="color: var(--accent-blue); width: 25px;"></i> <b>招生咨询:</b> 52282375 (欢迎热爱编程与 AI 的同学报读)</p>
         </div>
     </div>
-</div>
+</header>
+
+<section id="education">
+    <h2>教育经历 [EDUCATION]</h2>
+    <ul style="list-style: none;">
+        <li style="margin-bottom: 10px;">◈ <b>博士 (2002.10 - 2006.10)</b>: 新加坡南洋理工大学，信息工程。导师：Yap Kim-Hui</li>
+        <li style="margin-bottom: 10px;">◈ <b>硕士 (1999.09 - 2002.06)</b>: 华中科技大学，控制理论与工程。导师：黄心汉</li>
+        <li style="margin-bottom: 10px;">◈ <b>学士 (1995.09 - 1999.06)</b>: 武汉工业大学（现武汉理工大学），工业自动化</li>
+    </ul>
+</section>
 
 <section id="research">
-    <h2 class="section-title">研究兴趣</h2>
-    <div class="research-grid">
-        <div class="research-card">
-            <h3>具身智能与 VLA 模型</h3>
-            <p>探索视觉-语言-动作 (Vision-Language-Action) 大模型在闭环环境下的自我优化。重点研究基于单帧预测的轻量化端侧部署，解决机器人决策中的“物理幻觉”问题。</p>
+    <h2>研究方向 [RESEARCH]</h2>
+    <div class="grid">
+        <div class="card">
+            <h3><i class="fas fa-brain"></i> 多模态大模型</h3>
+            <p>主攻视觉-语言-动作 (VLA) 模型、扩散模型控制机制简化及生成式 AI 理论。</p>
         </div>
-        <div class="research-card">
-            <h3>机器人美学轨迹规划</h3>
-            <p>提出“机器人美学” (Embodied Aesthetics) 概念，将动感美学、构图美学转化为密集奖励函数，提升机器人在导航与操作中的动作流畅度与类人感。</p>
+        <div class="card">
+            <h3><i class="fas fa-eye"></i> 机器视觉与检测</h3>
+            <p>深入研究曲线网状结构分割、医学影像分析（血管检测）及工业级智能检测。</p>
         </div>
-        <div class="research-card">
-            <h3>多模态大模型</h3>
-            <p>深耕文本-图像扩散模型 (Diffusion Models) 的控制机制简化及其在零样本图像编辑中的应用，提升复杂提示词下的生成一致性。</p>
-        </div>
-        <div class="research-card">
-            <h3>医学影像与工业检测</h3>
-            <p>利用深度游走与蚁群算法解决曲线网状结构（如视网膜血管、工业缺陷）的精准分割，并应用于钢铁质量控制及船舶驾驶仿真。</p>
+        <div class="card">
+            <h3><i class="fas fa-robot"></i> 具身智能</h3>
+            <p>结合高性能计算与机器人阵列，探索智能体在物理场景中的感知增强与闭环交互。</p>
         </div>
     </div>
 </section>
 
 <section id="publications">
-    <h2 class="section-title">代表性论文</h2>
-    <table class="pub-table">
-        <tr class="pub-row">
-            <td class="pub-cell pub-year">2026</td>
-            <td class="pub-cell">
-                <span class="pub-tag">CVPR</span> <b>Kai Zhu, Li Chen, Jun Cheng.</b> Dual-level Adapter Boosting Prompt-free Curvilinear Structure Segmentation.
-            </td>
-        </tr>
-        <tr class="pub-row">
-            <td class="pub-cell pub-year">2025</td>
-            <td class="pub-cell">
-                <span class="pub-tag">IEEE TMM</span> <b>Rui Xiong, Li Chen, Zhida Feng, et al.</b> Integrating Aesthetic-Driven Hierarchical Semantics for Image Quality Assessment.
-            </td>
-        </tr>
-        <tr class="pub-row">
-            <td class="pub-cell pub-year">2025</td>
-            <td class="pub-cell">
-                <span class="pub-tag">AAAI</span> <b>Zhida Feng, Li Chen, et al.</b> Simplifying Control Mechanism in Text-to-Image Diffusion Models. <i>39(3), pp. 3013-3021.</i>
-            </td>
-        </tr>
-        <tr class="pub-row">
-            <td class="pub-cell pub-year">2024</td>
-            <td class="pub-cell">
-                <span class="pub-tag">CVPR</span> <b>Feng Zhida, Chen Li, et al.</b> Named Entity Driven Zero-Shot Image Manipulation. <i>pp. 9110-9119.</i>
-            </td>
-        </tr>
-        <tr class="pub-row">
-            <td class="pub-cell pub-year">2023</td>
-            <td class="pub-cell">
-                <span class="pub-tag">CVPR</span> <b>Zhida Feng, Zhenyu Zhang... Li Chen, et al.</b> ERNIE-ViLG 2.0: Improving Text-to-Image Diffusion Model with Knowledge-Enhanced MoE.
-            </td>
-        </tr>
-    </table>
+    <h2>论文发表 [PUBLICATIONS]</h2>
+    <div class="pub-list">
+        <div class="pub-item">
+            <span class="venue">CVPR 2026</span> <span class="pub-title">Dual-level Adapter Boosting Prompt-free Curvilinear Structure Segmentation.</span>
+            <p>Kai Zhu, Li Chen*, Jun Cheng. <a href="https://www.wust.edu.cn/info/1521/466142.htm" target="_blank" class="paper-link">[News Link]</a></p>
+        </div>
+        <div class="pub-item">
+            <span class="venue">IEEE TMM 2025</span> <span class="pub-title">Integrating Aesthetic-Driven Hierarchical Semantics for Image Quality Assessment.</span>
+            <p>Rui Xiong, Li Chen*, Zhida Feng, et al. (Accepted Dec 2025) </p>
+        </div>
+        <div class="pub-item">
+            <span class="venue">AAAI 2025</span> <span class="pub-title">Simplifying Control Mechanism in Text-to-Image Diffusion Models.</span>
+            <p>Zhida Feng, Li Chen*, et al. 39(3), pp. 3013-3021. <a href="https://www.researchgate.net/publication/390722173_Simplifying_Control_Mechanism_in_Text-to-Image_Diffusion_Models" target="_blank" class="paper-link">[AAAI Link]</a></p>
+        </div>
+        <div class="pub-item">
+            <span class="venue">CVPR 2024</span> <span class="pub-title">Named Entity Driven Zero-Shot Image Manipulation.</span>
+            <p>Feng Zhida, Chen Li*, et al. pp. 9110-9119. <a href="https://openaccess.thecvf.com/content/CVPR2024/html/Feng_Named_Entity_Driven_Zero-Shot_Image_Manipulation_CVPR_2024_paper.html" target="_blank" class="paper-link">[CVPR Link]</a></p>
+        </div>
+        <div class="pub-item">
+            <span class="venue">CVPR 2023</span> <span class="pub-title">ERNIE-ViLG 2.0: Improving Text-to-Image Diffusion Model with Knowledge-Enhanced Mixture-of-Denoising-Experts.</span>
+            <p>Zhida Feng, ..., Li Chen*, et al. pp. 10135-10145. <a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Feng_ERNIE-ViLG_2.0_Improving_Text-to-Image_Diffusion_Model_With_Knowledge-Enhanced_Mixture-of-Denoising-Experts_CVPR_2023_paper.pdf" target="_blank" class="paper-link">[Paper Link]</a></p>
+        </div>
+        <div class="pub-item">
+            <span class="venue">IEEE TMI 2020</span> <span class="pub-title">Dense dilated network with probability regularized walk for vessel detection.</span>
+            <p>Lei Mou, Li Chen*, et al. (1), pp. 1392-1403.</p>
+        </div>
+    </div>
+    <p style="font-size: 0.85rem; color: #6b7280; margin-top: 10px;">* 累计发表核心论文 140 余篇，涵盖 IEEE TIP、TSP、TSMC、Signal Processing Letters 等。</p>
 </section>
 
 <section id="projects">
-    <h2 class="section-title">科研项目</h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-        <div>
-            <h3>国家级基金</h3>
-            <ul style="margin-top:15px; padding-left:20px;">
-                <li>主持 <b>NSFC 面上项目</b>：面向曲线网状体图像分割的深度游走方法 (2023-2026)。</li>
-                <li>主持 <b>NSFC 面上项目</b>：面向图像网状结构体的蚁群分割算法。</li>
-                <li>主持 <b>NSFC 青年/面上项目</b>：盲视频质量评价、图象超分辨率重建等多项课题。</li>
+    <h2>科研项目 [PROJECTS]</h2>
+    <div class="grid">
+        <div class="card">
+            <h3><i class="fas fa-layer-group"></i> 纵向基金 (NSFC)</h3>
+            <ul style="font-size: 0.88rem; list-style: none;">
+                <li style="margin-bottom: 12px;">◈ <b>曲线网状体图像分割 (62271359)</b> | 国自然面上 | 2023-2026 (在研负责人)</li>
+                <li style="margin-bottom: 12px;">◈ <b>图像网状结构蚁群分割算法 (61773297)</b> | 国自然面上 | 负责人</li>
+                <li style="margin-bottom: 12px;">◈ <b>盲视频质量评价研究 (61375017)</b> | 国自然面上 | 负责人</li>
+                <li style="margin-bottom: 12px;">◈ <b>动态场景图象超分辨重建 (60705012)</b> | 国自然青年 | 负责人</li>
             </ul>
         </div>
-        <div>
-            <h3>企业横向课题</h3>
-            <ul style="margin-top:15px; padding-left:20px;">
-                <li>主持 <b>百度</b> 多模态技术研究及开发二期 (2024-2025)。</li>
-                <li>主持 安防视频图侦 AI 算法与技术 (80万) 及多项公安卡口大数据算法课题。</li>
-                <li>主持 监控场景文字识别及视频数据治理关键算法研发。</li>
+        <div class="card">
+            <h3><i class="fas fa-handshake"></i> 校企联合研发</h3>
+            <ul style="font-size: 0.88rem; list-style: none;">
+                <li style="margin-bottom: 12px;">◈ <b>百度横向课题</b>: 多模态技术研发 (一期 & 二期) | 2023-2025 | 负责人</li>
+                <li style="margin-bottom: 12px;">◈ <b>安防视频图侦 AI 技术</b>: 课题经费 80 万 | 负责人</li>
+                <li style="margin-bottom: 12px;">◈ <b>公安卡口大数据治理</b>: 跨模态算法研究 | 负责人</li>
+                <li style="margin-bottom: 12px;">◈ <b>监控场景文字识别算法</b>: 课题经费 20 万 | 负责人</li>
             </ul>
         </div>
     </div>
 </section>
 
-<section id="awards">
-    <h2 class="section-title">荣誉奖励</h2>
-    <ul class="pub-list" style="list-style: none;">
-        <li class="pub-item" style="padding: 15px; background: #f9f9f9; margin-bottom: 10px; border-radius: 5px;">
-            🥇 <b>2017 湖北省科技进步二等奖 (序1)</b>：安防监控故障诊断系统智能化技术及应用。
-        </li>
-        <li class="pub-item" style="padding: 15px; background: #f9f9f9; margin-bottom: 10px; border-radius: 5px;">
-            🥈 <b>2015 湖北省科技进步二等奖 (序5)</b>：面向包装印刷业的设计与生产智能辅助系统。
-        </li>
-        <li class="pub-item" style="padding: 15px; background: #f9f9f9; margin-bottom: 10px; border-radius: 5px;">
-            🎖️ <b>2010 湖北省自然科学杰出青年基金</b>、新世纪高层次人才工程优秀青年。
-        </li>
-    </ul>
+<section id="lab">
+    <h2>实验条件 [FACILITIES]</h2>
+    <div class="lab-highlight">
+        <p style="font-size: 1.1rem; opacity: 0.95;">依托湖北省重点实验室，拥有 1400 平方米科研场地，设备总值逾 <b>6000 余万元</b>。</p>
+        <div class="lab-grid">
+            <div class="lab-stat">
+                <h4>计算算力集群</h4>
+                <p>配置 10 台华为 <b>Atlas 800T A2</b> 训练服务器，总算力达 <b>34.5 PFLOPS</b>，辅以多台曙光高性能并行服务器。</p>
+            </div>
+            <div class="lab-stat">
+                <h4>机器人作战阵列</h4>
+                <p>宇树人形机器人 G1 (3台)、四足机器人 B2-W / Go2 / Go2-W (共5台)，及 Franka 双臂、遨博协作臂。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="honors">
+    <h2>荣誉与专利 [HONORS]</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>科技奖励</h3>
+            <p style="font-size: 0.9rem;">🏆 湖北省科技进步二等奖 (序1, 2017)</p>
+            <p style="font-size: 0.9rem;">🏆 湖北省科技进步二等奖 (序5, 2015)</p>
+            <p style="font-size: 0.9rem;">🏆 湖北省科技进步三等奖 (序4, 序7)</p>
+        </div>
+        <div class="card">
+            <h3>核心专利</h3>
+            <p style="font-size: 0.9rem;">📜 <b>美国发明专利 (US 12,436,267 B2)</b>: 水面目标自适应跟踪</p>
+            <p style="font-size: 0.9rem;">📜 <b>中国发明专利</b>: 人脸区块链隐私保护、仪表图像畸变消除等多项授权。</p>
+        </div>
+    </div>
 </section>
 
 <section id="team">
-    <h2 class="section-title">人才培养</h2>
-    <p style="margin-bottom: 30px;">实验室坚持“理论与应用并重”，多位学生获得百度最高奖、百度优秀奖。欢迎对人工智能充满热情的学子加入团队。</p>
-    <div class="team-grid">
-        <div class="alumni-card">
-            <h4>刘佳祥</h4>
-            <p>2016届 | 百度</p>
-            <small>百度最高奖获得者</small>
+    <h2>杰出人才培养 [ALUMNI]</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>优秀校友去向</h3>
+            <p style="font-size: 0.9rem;">实验室毕业生广泛进入行业领军企业工作：</p>
+            <ul style="font-size: 0.85rem; margin-top: 10px; padding-left: 15px;">
+                <li>◈ <b>刘佳祥:</b> 百度 (2020 百度最高奖获得者)</li>
+                <li>◈ <b>邬美银:</b> 华为 (黎曼实验室)</li>
+                <li>◈ <b>冯智达博士:</b> 百度 (优秀奖 2 次获得者)</li>
+                <li>◈ <b>刘洋/张鑫:</b> 字节跳动</li>
+                <li>◈ <b>彭小平:</b> 小米</li>
+            </ul>
         </div>
-        <div class="alumni-card">
-            <h4>邬美银</h4>
-            <p>2017届 | 华为</p>
-            <small>黎曼实验室</small>
-        </div>
-        <div class="alumni-card">
-            <h4>刘洋 / 张鑫</h4>
-            <p>2022届 | 字节跳动</p>
-        </div>
-        <div class="alumni-card">
-            <h4>冯智达</h4>
-            <p>2025届 | 百度</p>
-            <small>百度优秀奖获得者</small>
+        <div class="card" style="background: #003366; color: #fff;">
+            <h3 style="color: #93c5fd;">加入 IMVL</h3>
+            <p style="font-size: 0.9rem;">实验室目前专注人工智能理论与应用的结合研究。欢迎喜欢编程、有志于突破 AI 边界的同学报考硕士或博士研究生。</p>
         </div>
     </div>
 </section>
 
 <footer>
-    <div class="counter-section">
+    <div class="counter-container">
         <span id="busuanzi_container_site_pv">
-            👁️ 本站总访问量 <span id="busuanzi_value_site_pv" class="counter-num"></span> 次
-        </span> | 
+            <i class="fas fa-chart-line"></i> 总浏览能级: <span id="busuanzi_value_site_pv" class="counter-val">--</span> PV
+        </span>
+        &nbsp;&nbsp; | &nbsp;&nbsp;
         <span id="busuanzi_container_site_uv">
-            👤 访客数 <span id="busuanzi_value_site_uv" class="counter-num"></span> 人
+            <i class="fas fa-user-circle"></i> 访客人数: <span id="busuanzi_value_site_uv" class="counter-val">--</span> UV
         </span>
     </div>
-    <p>&copy; 2026 陈黎 (Li Chen) - 武汉科技大学计算机学院 | 智能机器视觉实验室</p>
-    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">由人工智能技术驱动设计与构建</p>
+    <p style="margin-top: 25px;">&copy; 2026 陈黎教授 | 武汉科技大学计算机学院 | 智能机器视觉实验室 (IMVL)</p>
 </footer>
 
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>
